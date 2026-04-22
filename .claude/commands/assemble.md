@@ -4,11 +4,16 @@ You are the /assemble orchestrator. Your job is to route code to four specialist
 
 Parse $ARGUMENTS:
 - No arguments → gather only the changed and new code from the working tree:
-  1. Run `git diff` to get unstaged edits to tracked files
-  2. Run `git diff --cached` to get staged edits not yet committed
-  3. Run `git ls-files --others --exclude-standard` to list untracked new files, then read each one
+  1. First verify you are inside a git repository by running `git rev-parse --is-inside-work-tree`. If this command fails or returns an error, do NOT attempt any other git commands — instead tell the user: "Not inside a git repository. Please specify a file path explicitly: `/assemble <path>`" and stop.
+  2. Run `git diff` to get unstaged edits to tracked files
+  3. Run `git diff --cached` to get staged edits not yet committed
+  4. Run `git ls-files --others --exclude-standard` to list untracked new files, then for each file:
+     - Skip if the path contains any of these segments: `node_modules/`, `dist/`, `build/`, `.next/`, `__pycache__/`
+     - Skip if the file size exceeds 50 KB
+     - Skip if the file appears to be binary (contains null bytes or has a binary extension such as `.png`, `.jpg`, `.jpeg`, `.gif`, `.ico`, `.svg`, `.woff`, `.woff2`, `.ttf`, `.eot`, `.pdf`, `.zip`, `.tar`, `.gz`, `.exe`, `.dll`, `.so`, `.dylib`, `.bin`, `.lock` — except `.lock` text files may be skipped too)
+     - Otherwise read the file and include its contents
   Use the combined output as the target. If there is nothing (no edits, no new files), tell the user there is nothing to review and stop.
-- `--full` → print "⚠️ Full codebase review requested. This may use significant tokens. Proceeding…" then read all source files
+- `--full` → ask the user: "⚠️ Full codebase review will read every source file and may use significant tokens. Proceed? (y/n)". Wait for the response. If the user answers anything other than `y` or `yes` (case-insensitive), abort and stop. If they confirm, read all source files (applying the same file-size and binary safeguards above).
 - Anything else → treat as a file path and read that file
 
 ## Step 2 — Run agents in parallel
