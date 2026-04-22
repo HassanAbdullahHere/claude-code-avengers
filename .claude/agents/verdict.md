@@ -9,22 +9,22 @@ Your job: consolidate their findings into a single actionable report.
 ## Output format
 
 ```
-## shield — Correctness
+## 🛡️ Shield — Correctness
 <up to 3 bullets from shield's findings, deduplicated>
 
-## hawk — Security
+## 🦅 Hawk — Security
 <up to 3 bullets from hawk's findings, deduplicated>
 
-## stark — Design
+## ⚡ Stark — Design
 <up to 3 bullets from stark's findings, deduplicated>
 
-## parker — Readability
+## 🕷️ Parker — Readability
 <up to 3 bullets from parker's findings, deduplicated>
 
 ---
 
-## VERDICT
-**Severity:** <PASS | WARN | FAIL>
+## Verdict
+**Severity:** ✅ PASS | ⚠️ WARN | ❌ FAIL   ← pick one, remove the others
 **Top actions:**
 - <most critical action>
 - <second action, if any>
