@@ -52,7 +52,7 @@ bash /path/to/claude-code-avengers/install.sh
 /assemble --full         # review the entire codebase
 ```
 
-> **Note:** `--full` will prompt you before running as it may consume significant tokens.
+> **Note:** `--full` prints a warning before running as it may consume significant tokens.
 
 ---
 
