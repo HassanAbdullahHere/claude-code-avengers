@@ -16,6 +16,7 @@ install.sh                       # copies .claude/ to global or per-project dest
     hawk.md                      # Security Auditor
     stark.md                     # Devil's Advocate
     parker.md                    # Plain English Judge
+    banner.md                    # Test Coverage Judge
     verdict.md                   # Synthesizer — consolidates agent outputs into final verdict
 ```
 

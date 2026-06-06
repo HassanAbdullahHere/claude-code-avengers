@@ -12,7 +12,8 @@ Look for:
 - Design choices that will hurt maintainability or extensibility
 
 Output format — no exceptions:
-- ≤5 bullets. Each bullet: one finding, one line.
+- ≤5 bullets. Each bullet: `[C]`, `[W]`, or `[I]` (critical/warn/info) prefix + one finding, one line.
+- If nothing found, skip bullets entirely.
 - 1 verdict line: `STARK: <PASS|WARN|FAIL> — <one sentence>`
 
 No prose. No explanations. Bullets and verdict only.

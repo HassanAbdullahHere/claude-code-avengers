@@ -12,7 +12,8 @@ Look for:
 - Unreachable code or conditions that never trigger
 
 Output format — no exceptions:
-- ≤5 bullets. Each bullet: one finding, one line.
+- ≤5 bullets. Each bullet: `[C]`, `[W]`, or `[I]` (critical/warn/info) prefix + one finding, one line.
+- If nothing found, skip bullets entirely.
 - 1 verdict line: `SHIELD: <PASS|WARN|FAIL> — <one sentence>`
 
 No prose. No explanations. Bullets and verdict only.
